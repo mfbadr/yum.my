@@ -1,0 +1,36 @@
+.panel.panel-default
+  .panel-heading
+    h3 {{title}}
+  .panel-body
+    .row
+      .col-xs-3
+        h3 Add a Categories
+        form(role='form', name='categoryForm', novalidate)
+          .form-group
+            label(for='name') Category Name
+            input.form-control#name(type='text', name='name', required, ng-model='category.name')
+        button.btn.btn-primary(ng-show='categoryForm.$valid', ng-click='addCategory()') Add Category
+      .col-xs-9
+        h3 Your Categories
+        ul
+          li(ng-repeat='c in categories') {{c.name}}
+    .row
+      .col-xs-3
+        h3 Add a Bookmark
+        form(role='form', name='bookmarkForm', novalidate)
+          .form-group
+            label(for='name') Name
+            input.form-control#name(type='text', name='name', required, ng-model='bookmark.name')
+          .form-group
+            label(for='url') URL
+            input.form-control#url(type='text', name='url', required, ng-model='bookmark.url')
+            // add url validation
+          .form-group
+            label(for='name') Category
+            select(ng-model='bookmark.category', required)
+              option(ng-repeat='c in categories', value='{{c._id}}') {{c.name}}
+        button.btn.btn-primary(ng-show='bookmarkForm.$valid', ng-click='addBookmark()') Add Bookmark
+      .col-xs-9
+        h3 Your Bookmarks
+        ul
+          li(ng-repeat='b in bookmarks'): a(href='{{b.url}}') {{b.name}}

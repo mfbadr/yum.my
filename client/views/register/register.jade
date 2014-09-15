@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading
+    h3 Register a New Account
+  .panel-body
+    .row
+      .col-xs-3
+        form(role='form', name='registerForm', novalidate)
+          .form-group
+            label(for='email') Email
+            input(type='email', name='email', required, ng-model='user.email')
+          .form-group
+            label(for='password') Password
+            input(type='password',ng-minlength='3', name='email', required, ng-model='user.password')
+        button.btn.btn-primary(ng-show='registerForm.$valid', ng-click='register()') Register
+      .col-xs-9
